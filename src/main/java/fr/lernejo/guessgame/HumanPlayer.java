@@ -10,14 +10,18 @@ public class HumanPlayer implements Player {
 
     @Override
     public long askNextGuess() {
+        logger.log("Entrez un nb");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Your next guess is ?");
         int nb = scanner.nextInt();
         return nb;
     }
 
     @Override
     public void respond(boolean lowerOrGreater) {
-
+        if (lowerOrGreater) {
+            logger.log("plus grand");
+        } else {
+            logger.log("plus petit");
+        }
     }
 }

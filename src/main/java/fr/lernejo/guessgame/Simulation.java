@@ -16,33 +16,34 @@ public class Simulation {
         this.player = player;
     }
 
-    public void initialize(long numberToGuess) {
+    public void initialize(long numberToGuess, long nbIter) {
         this.numberToGuess = numberToGuess;
+        loopUntilPlayerSucceed(nbIter);
     }
 
     /**
      * @return true if the player have guessed the right number
      */
     private boolean nextRound() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number");
-        nb = scanner.nextInt();
-        if (nb == this.numberToGuess) {
-            System.out.println("Trouve");
+        this.nb = player.askNextGuess();
+        if (this.nb == this.numberToGuess) {
+            logger.log("Trouve");
             return true;
-        } else if (nb > this.numberToGuess) {
-            logger.log("Plus petit");
-            return false;
-        } else if (nb < this.numberToGuess) {
-            logger.log("Plus grand");
-            return false;
+        } else {
+            player.respond(this.nb < this.numberToGuess);
         }
         return false;
     }
 
-    public void loopUntilPlayerSucceed() {
-        while (this.nb != this.numberToGuess) {
+    public void loopUntilPlayerSucceed(long maxIter) {
+        int counter = 0;
+        long debut = System.currentTimeMillis();
+        while (this.nb != this.numberToGuess || maxIter == counter) {
+            counter = counter + 1;
             this.nextRound();
         }
+        long fin = System.currentTimeMillis();
+            long time = fin - debut;
+            logger.log("Felicitations, vous avez trouve en " + time / 1000 + " s");
     }
 }
