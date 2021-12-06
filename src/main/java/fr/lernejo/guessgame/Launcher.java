@@ -10,9 +10,11 @@ public class Launcher {
         if (args[0].equals("-interactive")) {
             Simulation sim = new Simulation(new HumanPlayer());
             sim.initialize(number, 999);
+            sim.loopUntilPlayerSucceed((int)Long.MAX_VALUE);
         } else if (args[0].equals("-auto")) {
             Simulation sim = new Simulation(new ComputerPlayer());
             sim.initialize(number, 1000);
+            sim.loopUntilPlayerSucceed(1000);
         } else {
             System.out.println("Choisir un mode -interactive ou -auto");
         }
