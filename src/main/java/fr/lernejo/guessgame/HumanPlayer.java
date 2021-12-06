@@ -10,7 +10,7 @@ public class HumanPlayer implements Player {
 
     @Override
     public long askNextGuess() {
-        logger.log("Entrez un nb");
+//        logger.log("Entrez un nb");
         Scanner scanner = new Scanner(System.in);
         int nb = scanner.nextInt();
         return nb;
@@ -19,9 +19,9 @@ public class HumanPlayer implements Player {
     @Override
     public void respond(boolean lowerOrGreater) {
         if (lowerOrGreater) {
-            logger.log("plus grand");
+            logger.log("grand");
         } else {
-            logger.log("plus petit");
+            logger.log("petit");
         }
     }
 }

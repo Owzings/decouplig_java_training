@@ -15,10 +15,10 @@ public class ComputerPlayer implements Player{
     @Override
     public void respond(boolean lowerOrGreater) {
         if (lowerOrGreater) {
-            System.out.println("plus petit");
+            System.out.println("petit");
             min = guess;
         } else {
-            System.out.println("plus grand");
+            System.out.println("grand");
             max = guess;
         }
     }
