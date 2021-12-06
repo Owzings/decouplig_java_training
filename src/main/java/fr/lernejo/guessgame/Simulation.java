@@ -27,7 +27,6 @@ public class Simulation {
     private boolean nextRound() {
         this.nb = player.askNextGuess();
         if (this.nb == this.numberToGuess) {
-            logger.log("Trouve");
             return true;
         } else {
             player.respond(this.nb < this.numberToGuess);
@@ -44,7 +43,6 @@ public class Simulation {
         }
         long fin = System.currentTimeMillis();
             long time = fin - debut;
-            logger.log("Vous avez trouve en " + time / 1000 + " s");
-            logger.log("vous avez gagne");
+            logger.log("Vous avez trouvé en " + time / 1000 + " s");
     }
 }
